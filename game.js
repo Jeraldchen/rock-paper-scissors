@@ -1,3 +1,7 @@
+let playerScore = 0;
+let computerScore = 0;
+const buttons =  document.querySelectorAll('button');
+
 function computerPlay() {
     let x = Math.floor(Math.random() * 10);
     if (x % 3 === 1) {
@@ -16,12 +20,18 @@ function playRound(computerSelection, playerSelection) {
         runningScore = "You lose! " + "Player Score: " + playerScore + " Computer Score: " + computerScore;
         if (computerScore == 5) {
             runningScore = "The computer won! " + "Player Score: " + playerScore + " Computer Score: " + computerScore;
+            buttons.forEach(button => {
+                button.disabled = true;
+            });
         }
     } else if ((playerSelection == 'rock' && computerSelection == 'scissors') || (playerSelection == 'paper' && computerSelection == 'rock') || (playerSelection == 'scissors' && computerSelection == 'paper')) {
         playerScore += 1;
         runningScore = "You won! " + "Player Score: " + playerScore + " Computer Score: " + computerScore;
         if (playerScore == 5) {
             runningScore = "Congratulations! You beat the computer! " + "Player Score: " + playerScore + " Computer Score: " + computerScore;
+            buttons.forEach(button => {
+                button.disabled = true;
+            });
         }
     } else {
         runningScore = "It's a draw! " + "Player Score: " + playerScore + " Computer Score: " + computerScore;
@@ -31,11 +41,8 @@ function playRound(computerSelection, playerSelection) {
 
 }
 
-let playerScore = 0;
-let computerScore = 0;
-const buttons =  document.querySelectorAll('button');
 buttons.forEach((button) => {
-    button.addEventListener('click', function(){
+    button.addEventListener('click', () => {
         playRound(computerPlay(), button.id);
     });
 });
