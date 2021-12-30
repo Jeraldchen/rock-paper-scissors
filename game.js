@@ -17,24 +17,24 @@ function playRound(computerSelection, playerSelection) {
     let runningScore = "";
     if ((computerSelection == 'rock' && playerSelection == 'scissors') || (computerSelection == 'paper' && playerSelection == 'rock') || (computerSelection == 'scissors' && playerSelection == 'paper')) {
         computerScore += 1;
-        runningScore = "You lose! " + "Player Score: " + playerScore + " Computer Score: " + computerScore;
+        runningScore = "You: " + playerSelection + " VS " + "Computer: " + computerSelection + "<br><br>You lose! " + "<br><br>Player Score: " + playerScore + " Computer Score: " + computerScore;
         if (computerScore == 5) {
-            runningScore = "The computer won! " + "Player Score: " + playerScore + " Computer Score: " + computerScore;
+            runningScore = "The computer won! " + "<br><br>Player Score: " + playerScore + " Computer Score: " + computerScore + "<br><br> Refresh the page to play again!";
             buttons.forEach(button => {
                 button.disabled = true;
             });
         }
     } else if ((playerSelection == 'rock' && computerSelection == 'scissors') || (playerSelection == 'paper' && computerSelection == 'rock') || (playerSelection == 'scissors' && computerSelection == 'paper')) {
         playerScore += 1;
-        runningScore = "You won! " + "Player Score: " + playerScore + " Computer Score: " + computerScore;
+        runningScore = "You: " + playerSelection + " VS " + "Computer: " + computerSelection + "<br><br>You won! " + "<br><br>Player Score: " + playerScore + " Computer Score: " + computerScore;
         if (playerScore == 5) {
-            runningScore = "Congratulations! You beat the computer! " + "Player Score: " + playerScore + " Computer Score: " + computerScore;
+            runningScore = "Congratulations! You beat the computer! " + "<br><br>Player Score: " + playerScore + " Computer Score: " + computerScore + "<br><br> Refresh the page to play again!";
             buttons.forEach(button => {
                 button.disabled = true;
             });
         }
     } else {
-        runningScore = "It's a draw! " + "Player Score: " + playerScore + " Computer Score: " + computerScore;
+        runningScore = "You: " + playerSelection + " VS " + "Computer: " + computerSelection + "<br><br>It's a draw! " + "<br><br>Player Score: " + playerScore + " Computer Score: " + computerScore;
     }
     document.getElementById('results').innerHTML = runningScore;
     return;
